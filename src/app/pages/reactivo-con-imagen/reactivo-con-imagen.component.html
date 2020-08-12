@@ -1,0 +1,33 @@
+<form autocomplete="off" [formGroup]="formulario" (ngSubmit)="guardar()">
+    <div class="form-group">
+        <label for="titulo">Titulo</label>
+        <input type="text" class="form-control" id="titulo" placeholder="Curso de ..." formControlName="Titulo">
+    </div>
+    <div class="form-group">
+        <label for="descripcion">Descripcion</label>
+        <textarea class="form-control" id="descripcion" rows="3" formControlName="Descripcion"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="email">Correo de contacto</label>
+        <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="EmailContacto">
+    </div>
+    <div class="form-group">
+        <label *ngIf="!imageTemporal" for="img">Imagen</label>
+        <img *ngIf="imageTemporal" [src]="imageTemporal" width="150px" class="my-3">
+        <input type="file" class="form-control-file" id="img" (change)="fileChange($event.target.files[0])" placeholder="Upload file" accept=".png,.jpg,.jpeg">
+    </div>
+    <button class="btn btn-outline-primary w-100" [disabled]="image == null || !formulario.valid">
+        Enviar
+    </button>
+</form>
+
+<!-- <hr>
+<pre>
+    Estado del formulario: {{ formulario.valid }}
+    <br>
+    Status: {{formulario.status}}
+</pre>
+
+<pre>
+    {{ formulario.value | json }}
+</pre> -->
